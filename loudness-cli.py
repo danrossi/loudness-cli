@@ -52,7 +52,7 @@ if __name__ == "__main__":
 	if os.path.isfile(args.input):
 		statsDict = r128Stats(args.input, args.stream)
 		statsDict["gain"] = linearGain(statsDict["I"], float(args.target));
-		print(statsDict)
+		print(json.dumps(statsDict))
 	else:
 		print "%s not found" % args.input
 
