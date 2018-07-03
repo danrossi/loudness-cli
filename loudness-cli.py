@@ -4,6 +4,7 @@ import argparse
 import os
 import subprocess
 import re
+import json
 
 def r128Stats(filePath, stream=0):
     """ takes a path to an audio file, returns a dict with the loudness
@@ -50,8 +51,8 @@ if __name__ == "__main__":
 
 	if os.path.isfile(args.input):
 		statsDict = r128Stats(args.input, args.stream)
-		statsDict["gain"] = linearGain(statsDict["I"], args.target);
-		print(statsDict)
+		statsDict["gain"] = linearGain(statsDict["I"], float(args.target));
+		print(json.dumps(statsDict))
 	else:
 		print "%s not found" % args.input
 
